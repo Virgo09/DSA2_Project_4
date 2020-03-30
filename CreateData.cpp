@@ -2,59 +2,63 @@
    
 CreateData::CreateData()
 {
-   std::cout << "5\n";
-   readFile("t1.txt", 1);
-   readFile("t2.txt", 2);
-   readFile("t3.txt", 3);
-   readFile("t4.txt", 4);
+   readFile("TestFiles\\t1.txt");
+   //readFile("TestFiles\\t2.txt");
+   //readFile("TestFiles\\t3.txt");
+   readFile("TestFiles\\t4.txt");
    std::cout << "10\n";
 }
    
-void CreateData::appendBatch(char testResult, std::string dataFileName)
+void CreateData::appendBatch()
 {
-   dataFile.open(dataFileName, std::ios::out | std::ios::app);
-   dataFile << testResult + "\n";
-}
-         
-void CreateData::readFile(std::string testFileName, int test)
-{
-   std::string dataFileName;
-   std::string dataFolder = "\\d" + std::to_string(test);
-   
-   if(_mkdir((dataFolder).c_str()) == -1){
-      std::cout << "Error\n";
-   }
-   std::cout << dataFolder.c_str();
-   testFile.open(testFileName);
-   testFile >> numBatch;
-   testFile >> numItems;
-   testFile >> percentBadBatches;
-   testFile >> percentBadItems;
-   testFile >> numSampled;
    
    for(int i = 0; i < numBatch; i++)
-   {
-      dataFileName = "\\d" + std::to_string(test) + "\\d" + std::to_string(i) + ".txt";
-      
+   {  
+      std::string dataFileName = "DataFiles\\D" + std::to_string(i) + ".txt";
+      dataFile.open(dataFileName, std::ios::out | std::ios::app);
+      if(dataFile.is_open())
+      {
+         std::cout << i << " ";
+      }
       if(i % numBatch >= numBatch * percentBadBatches / 100)
       {
          for(int j = 0; j < numItems; j++)
          {
-            appendBatch('b', dataFileName);
+            dataFile << "b\n";
          }
+         dataFile.close();
          continue;
       }
-      
       for(int j = 0; j < numItems; j++)
       {
          if(j % numItems >= numItems * percentBadItems / 100)
          {
-            appendBatch('g', dataFileName);
+            dataFile << "g\n";
          }
          else
          {
-            appendBatch('b', dataFileName);
+            dataFile << "b\n";
          }
       }
+      dataFile.close();
+   }      
+}
+         
+void CreateData::readFile(std::string testFileName)
+{
+   
+   testFile.open(testFileName);
+   if(testFile.is_open())
+   {
+      std::cout << "The File Opened!\n";
    }
+   testFile >> this -> numBatch;
+   testFile >> this -> numItems;
+   testFile >> this -> percentBadBatches;
+   testFile >> this -> percentBadItems;
+   testFile >> this -> numSampled;
+   
+   
+   appendBatch();
+   testFile.close();
 }

@@ -12,8 +12,8 @@ class CreateData
 {
 public:
    CreateData();
-   void appendBatch(char testResult, std::string dataFileName);
-   void readFile(std::string fileName, int test);
+   void appendBatch();
+   void readFile(std::string fileName);
 
 private:
    std::ofstream dataFile;

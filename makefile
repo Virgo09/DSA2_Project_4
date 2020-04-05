@@ -6,7 +6,7 @@ CC = g++
 #  -Wall turns on most, but not all, compiler warnings
 CFLAGS  = -std=c++11 -g -Wall
 
-OBJECTS = CreateData.o
+OBJECTS = CreateData.o MonteCarlo.o MonteCarloSim.o
 HEADERS := $(shell find . -path ./test -prune -o -name "*.hpp" -print)
 
 main: main.o $(OBJECTS)

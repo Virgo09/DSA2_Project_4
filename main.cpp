@@ -2,6 +2,8 @@
 
 int main()
 {
-   CreateData();
-   std::cout << "here\n";
+   CreateData("TestFiles\\t1.txt");
+   CreateData("TestFiles\\t2.txt");
+   CreateData("TestFiles\\t3.txt");
+   CreateData("TestFiles\\t4.txt");
 }

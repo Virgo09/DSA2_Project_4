@@ -1,4 +1,5 @@
-#include "CreateData.cpp"
+#include "CreateData.hpp"
+#include "MonteCarloSim.hpp"
 
 int main()
 {
@@ -6,4 +7,6 @@ int main()
    CreateData("TestFiles\\t2.txt");
    CreateData("TestFiles\\t3.txt");
    CreateData("TestFiles\\t4.txt");
+   
+   MonteCarloSim();
 }

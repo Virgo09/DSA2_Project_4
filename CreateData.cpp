@@ -18,7 +18,7 @@ void CreateData::appendBatch()
    for(int i = 0; i < numBatch; i++)
    {  
       bad = 0;
-      std::string dataFileName = "DataFiles\\D" + std::to_string(i) + ".txt";
+      std::string dataFileName = "DataFiles/D" + std::to_string(i) + ".txt";
       dataFile.open(dataFileName, std::ios::out | std::ios::app);
       batch = numBatch / percentBadBatches; 
       if(!dataFile.is_open())

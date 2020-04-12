@@ -25,7 +25,7 @@ void MonteCarlo::findBadBatch()
    std::cout << "Analyzing Data Sets: \n";
    for(int i = 0; i < numBatch; i++)
    {
-      std::string dataFileName = "DataFiles\\D" + std::to_string(i) + ".txt";
+      std::string dataFileName = "DataFiles/D" + std::to_string(i) + ".txt";
       dataFile.open(dataFileName, std::ios::in);
       if(!dataFile.is_open())
       {

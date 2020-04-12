@@ -59,9 +59,11 @@ void CreateData::readFile(std::string testFileName)
 {
    
    testFile.open(testFileName);
+   std::cout << testFileName << std::endl;
    if(!testFile.is_open())
    {
       std::cout << testFileName << " file failed to open!\n";
+      return;
    }
    testFile >> this -> numBatch;
    testFile >> this -> numItems;

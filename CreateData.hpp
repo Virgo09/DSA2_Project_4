@@ -5,11 +5,9 @@
 #include <fstream>
 #include <iostream>
 #include <string>
-#include <io.h>
-#include <direct.h>
 #include <stdlib.h>
 #include <time.h>
-#include "MonteCarlo.cpp"
+#include "MonteCarlo.hpp"
 
 class CreateData
 {
